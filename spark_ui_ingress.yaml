@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spark-ui
+  namespace: jupyterhub
+spec:
+  rules:
+  - host: "YOUR_PATH.com"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: driver-service
+            port:
+              number: 4040
